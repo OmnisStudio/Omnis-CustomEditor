@@ -1,5 +1,5 @@
 # Omnis-CustomEditor
-Library shows how you can create a custom editor to modify a schema editor. 
+Library shows how you can create a custom editor to modify a schema class. 
 For more info:
 http://www.omnis.net/documentation/programming/index.jsp?detail=01omnistools.html#external-class-editor
 
