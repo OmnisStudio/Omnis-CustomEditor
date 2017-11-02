@@ -1,0 +1,8 @@
+;  Enter your initialization code here
+
+Do $topwind.$getContextColumn Returns lColumnName
+If len(lColumnName)
+	Do $cinst.$objs.Delete.$text.$assign(con('Delete Column ',chr(39),lColumnName,chr(39)))
+Else
+	Do $cinst.$objs.Delete.$enabled.$assign(kFalse)
+End If
