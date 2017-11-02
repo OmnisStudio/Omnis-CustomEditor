@@ -1,0 +1,6 @@
+Do $root.$modes.$installtool(kEnvToolAddOn,"My Schema Editor...",1700,"Custom schema editor")
+
+Open window instance wMyAbout/CEN
+
+Set reference lSchemaRef to $clib.$schemas.sMySchema
+Open window instance wMyClassEditor/CEN (lSchemaRef)

@@ -1,0 +1,26 @@
+{
+	"classtype": "kSchema",
+	"internalversion": 3,
+	"nextident": 32091,
+	"properties": {
+		"componenticon": 0,
+		"componenttype": "kCompStoreHidden",
+		"createdate": "2017-01-30 12:22:20",
+		"createinstancewhensubtype": true,
+		"desc": "",
+		"editor": "MYEDITOR",
+		"editordata": "",
+		"external": false,
+		"moddate": "2016-05-27 11:49:27",
+		"servertablename": "MyTable",
+		"showascheckedout": false,
+		"userinfo": {
+			"type": 29,
+			"subtype": 1,
+			"data": {
+				"$base64": "ggEAIAAAAMkAAAEiAAAAAwAAAAH/////AAAAAQAAASKBAAAaAAAAaQAAAGkAAACpAAAAAABpAAAAAIIBACAAAAAgAAAATwAAAAMAAAACO5rKAAAAAAAAAABPAAAAAAEA4AIAFGQAFf//gQZJbmRleDEAAiHgAgAUZAAV//+BBkluZGV4MgACIeAAAAACAAIAAElOREVYMQAAAAAAAAAAAAAAAAAAAAAAAAAAAAFJTkRFWDIAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAEA4AIAUoElQ3JlYXRlIEluZGV4IE15SW5kZXgxIG9uIE15VGFibGUgKEMyKYElQ3JlYXRlIEluZGV4IE15SW5kZXgyIG9uIE15VGFibGUgKEM0KeA="
+			}
+		},
+		"version": "1"
+	}
+}
