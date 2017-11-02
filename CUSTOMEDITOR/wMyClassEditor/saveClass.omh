@@ -1,0 +1,49 @@
+;  update schema class
+
+Do iClassRef.$servertablename.$assign(iServerTableName)
+
+;  remove deleted columns
+For iDeletedColumns.$line from 1 to iDeletedColumns.$linecount step 1
+	Do iDeletedColumns.$loadcols()
+	If iDeletedIdent<>-1
+		Do iClassRef.$objs.$findident(iDeletedIdent) Returns lObjRef
+		Do iClassRef.$objs.$remove(lObjRef)
+	End If
+End For
+
+For iColumnList.$line from 1 to iColumnList.$linecount step 1
+	Do iColumnList.$loadcols()
+	
+	If iColIdent=-1     ;; add new column
+		Do iClassRef.$objs.$add(iColName) Returns lObjRef
+	Else     ;; update existing column
+		Do iClassRef.$objs.$findident(iColIdent) Returns lObjRef
+	End If
+	
+	Do lObjRef.$name.$assign(iColName)
+	Do lObjRef.$coltype.$assign([iColTypeList.iColType])
+	If iColSubTypeList.C1<>'N/A'
+		If iColTypeList.iColType='kRow'|iColTypeList.iColType='kList'
+			Do lObjRef.$colsubtype.$assign(iColSubTypeList.C1)
+		Else
+			Do lObjRef.$colsubtype.$assign([iColSubTypeList.C1])
+		End If
+	Else
+		Do lObjRef.$colsubtype.$assign('')
+	End If
+	
+	Do lObjRef.$colsublen.$assign(iColSubLen)
+	Do lObjRef.$desc.$assign(iColDesc)
+	Do lObjRef.$primarykey.$assign(iColPrimaryKey=2)
+	Do lObjRef.$nonull.$assign(iColNoNull=2)
+	Do lObjRef.$userinfo.$assign(iColUserInfo)
+	Do lObjRef.$order.$assign(iColumnList.$line)
+End For
+
+For iUserInfoList.$line from 1 to iUserInfoList.$linecount step 1
+	Do iUserInfoList.$loadcols()
+	Do lUserInfoRow.$cols.$add(iUserInfoColName,kCharacter,kSimplechar)
+	Calculate lUserInfoRow.[iUserInfoColName] as iUserInfoColValue
+End For
+
+Do iClassRef.$userinfo.$assign(lUserInfoRow) Returns #F

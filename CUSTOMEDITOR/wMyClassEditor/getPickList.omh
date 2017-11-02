@@ -1,0 +1,5 @@
+;  used to make selection for primary key and nonull properties
+
+Do iPickList.$define(iPickType)
+Do iPickList.$add('kFalse')
+Do iPickList.$add('kTrue')

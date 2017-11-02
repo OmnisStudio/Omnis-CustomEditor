@@ -1,0 +1,53 @@
+;  Enter your initialization code here
+
+Calculate iDialogType as pDialogType
+
+Switch iDialogType
+	Case 'newSchema'
+		Do $cinst.$objs.PagedPane.$currentpage.$assign(1)
+		Do $cinst.$title.$assign('New Schema')
+		Do $cinst.$objs.Msg.$text.$assign("Create a new Schema Class and set its $editor property to use the custom schema editor.")
+		Do $cinst.$objs.btnOK.$text.$assign('Create')
+		
+	Case 'openSchema'
+		Do $cinst.$objs.PagedPane.$currentpage.$assign(2)
+		Do $cinst.$title.$assign('Open Schema')
+		Do $cinst.$objs.btnOK.$text.$assign('Open')
+		
+	Case 'saveSchema'
+		Do $cinst.$objs.PagedPane.$currentpage.$assign(1)
+		Do $cinst.$title.$assign('Save Schema As')
+		Do $cinst.$objs.btnOK.$text.$assign('Save')
+End Switch
+
+Do method getLibList
+Do iLibList.$loadcols()
+Do method getSchemaList (iLibName)
+
+Calculate lSchemaName as 'NewSchema'
+Calculate lCount as 1
+
+While iNewSchemaName=''
+	Set reference lRef to $libs.[iLibName].$classes.[lSchemaName]
+	If len(lRef)
+		Calculate lSchemaName as con('NewSchema ',lCount)
+	Else
+		Calculate iNewSchemaName as lSchemaName
+	End If
+	Calculate lCount as lCount+1
+End While
+
+Do method enableButtons
+
+Enter data
+If flag true
+	If iDialogType='newSchema'|iDialogType='saveSchema'
+		Do iLibList.$loadcols()
+		Do $libs.[iLibName].$schemas.$add(iNewSchemaName) Returns pSchemaRef
+	Else
+		Do iSchemaList.$loadcols()
+		Set reference pSchemaRef to iSchemaRef
+	End If
+End If
+
+Close window instance $cinst

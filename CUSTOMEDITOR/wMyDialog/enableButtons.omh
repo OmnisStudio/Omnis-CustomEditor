@@ -1,0 +1,5 @@
+If iDialogType='openSchema'
+	Do $cinst.$objs.btnOK.$enabled.$assign(iLibList.$line>0&iSchemaList.$line>0)
+Else If iDialogType='newSchema'|iDialogType='saveSchema'
+	Do $cinst.$objs.btnOK.$enabled.$assign(iLibList.$line>0&len(iNewSchemaName)>0)
+End If

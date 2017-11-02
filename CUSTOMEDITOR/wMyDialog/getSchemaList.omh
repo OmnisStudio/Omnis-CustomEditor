@@ -1,0 +1,5 @@
+Do iSchemaList.$define(iSchemaName,iSchemaRef)
+Do iSchemaList.$merge($libs.[pLibName].$schemas.$makelist($ref.$name,$ref))
+If iSchemaList.$linecount>0
+	Do iSchemaList.$line.$assign(1)
+End If

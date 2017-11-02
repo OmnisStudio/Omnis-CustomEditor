@@ -1,0 +1,11 @@
+On evClick     ;; Event Parameters - pRow( Itemreference )
+	If iDialogType=1
+		Do iLibList.$loadcols()
+		Set reference lRef to $libs.[iLibName].$classes.[iNewSchemaName]
+		If len(lRef)
+			OK message
+			Quit method
+		End If
+	End If
+	
+	Queue OK

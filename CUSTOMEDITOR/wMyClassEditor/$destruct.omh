@@ -1,0 +1,7 @@
+;  save class
+
+If len(iClassRef)>0
+	Do method saveClass
+Else If iServerTableName<>''|iColumnList.$linecount>0|iUserInfoList.$linecount>0
+	Do method $saveSchemaAs
+End If

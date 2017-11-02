@@ -1,0 +1,10 @@
+;  open existing schema and set $editor to use this editor when opening from the browser
+
+Open window instance wMyDialog/CEN ('openSchema',lSchemaRef)
+If len(lSchemaRef)
+	Set reference iClassRef to lSchemaRef
+	Do iClassRef.$editor.$assign('MYEDITOR')
+	Do method loadClass
+	Do method setTitle
+	Do $cinst.$redraw()
+End If

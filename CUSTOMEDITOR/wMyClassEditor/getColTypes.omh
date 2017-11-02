@@ -1,0 +1,15 @@
+;  build list of supported column types
+
+Do iColTypes.$define(iColType,iColValue)
+Do iColTypes.$add('kCharacter',kCharacter)
+Do iColTypes.$add('kInteger',kInteger)
+Do iColTypes.$add('kNumber',kNumber)
+Do iColTypes.$add('kBoolean',kBoolean)
+Do iColTypes.$add('kDate',kDate)
+Do iColTypes.$add('kSequence',kSequence)
+Do iColTypes.$add('kPicture',kPicture)
+Do iColTypes.$add('kList',kList)
+Do iColTypes.$add('kRow',kRow)
+Do iColTypes.$add('kObject',kObject)
+Do iColTypes.$add('kBinary',kBinary)
+Do iColTypes.$add('kItemref',kItemref)

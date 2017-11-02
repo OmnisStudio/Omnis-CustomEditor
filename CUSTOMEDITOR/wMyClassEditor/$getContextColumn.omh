@@ -1,0 +1,3 @@
+;  called by $construct of context menu to show column name
+
+Quit method iColumnList.[iContextLine].iColName

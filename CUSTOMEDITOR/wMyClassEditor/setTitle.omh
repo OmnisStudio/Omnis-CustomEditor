@@ -1,0 +1,4 @@
+;  set window title to show class being edited
+
+Calculate lTitle as con('My Schema Editor',pick(len(iClassRef),'',con(' - ',iClassRef().$name)))
+Do $cinst.$title.$assign(lTitle)

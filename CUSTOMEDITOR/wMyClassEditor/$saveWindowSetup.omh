@@ -1,0 +1,6 @@
+;  save position and size of editor, size of columns and size of grid in $editordata
+
+Do iEditorData.$define(iEditorTop,iEditorLeft,iEditorWidth,iEditorHeight,iEditorColWidths1,iEditorColWidths2,iEditorPane2Height)
+Do iEditorData.$assigncols($cinst.$top,$cinst.$left,$cinst.$width,$cinst.$height,$cinst.$objs.SchemaColumns.$columnwidths,$cinst.$objs.BottomPane.$objs.UserInfo.$columnwidths,$cinst.$objs.BottomPane.$height)
+
+Do $cclass.$editordata.$assign(iEditorData)

@@ -1,0 +1,15 @@
+;  populate variables from schema class
+
+Do iColumnList.$define(iColName,iColTypeList,iColSubTypeList,iColSubLen,iColDesc,iColPrimaryKey,iColNoNull,iColUserInfo,iColIdent)
+Do iUserInfoList.$define(iUserInfoColName,iUserInfoColValue)
+
+If len(iClassRef)
+	Calculate iServerTableName as iClassRef.$servertablename
+	
+	Do iColumnList.$merge(iClassRef.$objs.$makelist($ref.$name,$cinst.$getColTypeList($ref.$coltype),$cinst.$getColSubTypeList($ref.$coltype,$ref.$colsubtype),$ref.$colsublen,pick(len($ref.$desc)>0,'',$ref.$desc),pick($ref.$primarykey=kTrue,1,2),pick($ref.$nonull=kTrue,1,2),$ref.$userinfo,$ref.$ident))
+	
+	Calculate lRow as iClassRef.$userinfo
+	For lCount from 1 to lRow.$colcount step 1
+		Do iUserInfoList.$add(lRow.[lCount].$name,lRow.[lCount])
+	End For
+End If

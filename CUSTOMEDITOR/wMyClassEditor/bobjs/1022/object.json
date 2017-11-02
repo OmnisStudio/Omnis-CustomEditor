@@ -1,0 +1,27 @@
+{
+	"ident": 1022,
+	"order": 16386,
+	"objtype": "kLabel",
+	"properties": {
+		"align": "kLeftJst",
+		"backcolor": "kColorBackFill",
+		"backpattern": 15,
+		"designactive": true,
+		"edgefloat": "kEFright",
+		"fieldstyle": "CtrlLabel",
+		"font": 5,
+		"fontsize": 0,
+		"fontstyle": "kPlain",
+		"forecolor": "kColorForeFill",
+		"height": 20,
+		"left": 5,
+		"objlink": 65539,
+		"text": "$userinfo (row variable which can be used to store any associated developer data with the class.)",
+		"textcolor": "kColorWindowText",
+		"top": 10,
+		"userinfo": "",
+		"vertcentertext": true,
+		"visible": true,
+		"width": 740
+	}
+}

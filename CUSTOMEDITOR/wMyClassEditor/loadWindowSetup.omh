@@ -1,0 +1,13 @@
+;  set position and size of editor, size of columns and size of grid as saved in $editordata
+
+Calculate iEditorData as $cclass.$editordata
+
+If iEditorData.$colcount>0
+	Do $cinst.$top.$assign(iEditorData.iEditorTop)
+	Do $cinst.$left.$assign(iEditorData.iEditorLeft)
+	Do $cinst.$width.$assign(iEditorData.iEditorWidth)
+	Do $cinst.$height.$assign(iEditorData.iEditorHeight)
+	Do $cinst.$objs.SchemaColumns.$columnwidths.$assign(iEditorData.iEditorColWidths1)
+	Do $cinst.$objs.BottomPane.$objs.UserInfo.$columnwidths.$assign(iEditorData.iEditorColWidths2)
+	Do $cinst.$objs.BottomPane.$height.$assign(iEditorData.iEditorPane2Height)
+End If

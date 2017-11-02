@@ -1,0 +1,4 @@
+;  return list of column types as built in getColTypes and set current line to current type
+
+Do iColTypes.$search(iColValue=pValue,kTrue,kFalse,kFalse,kFalse)
+Quit method iColTypes

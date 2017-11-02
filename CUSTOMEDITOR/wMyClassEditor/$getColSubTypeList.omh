@@ -1,0 +1,58 @@
+;  return list of sub types for current column type (pColType) and set current line to current sub type (pColSubType)
+
+Do lMyList.$define(lSubType,lSubTypeValue)
+
+Switch pColType
+	Case kCharacter
+		Do lMyList.$add('kSimplechar',kSimplechar)
+		Do lMyList.$add('kNatchar',kNatchar)
+		
+	Case kInteger
+		Do lMyList.$add('kShortint',kShortint)
+		Do lMyList.$add('k32bitint',k32bitint)
+		Do lMyList.$add('k64bitint',k64bitint)
+		
+	Case kNumber
+		Do lMyList.$add('kFloatdp',kFloatdp)
+		Do lMyList.$add('k0dp',k0dp)
+		Do lMyList.$add('k1dp',k1dp)
+		Do lMyList.$add('k2dp',k2dp)
+		Do lMyList.$add('k3dp',k3dp)
+		Do lMyList.$add('k4dp',k4dp)
+		Do lMyList.$add('k6dp',k6dp)
+		Do lMyList.$add('k8dp',k8dp)
+		Do lMyList.$add('k10dp',k10dp)
+		Do lMyList.$add('k12dp',k12dp)
+		Do lMyList.$add('k14dp',k14dp)
+		Do lMyList.$add('k0dpShortnum',k0dpShortnum)
+		Do lMyList.$add('k2dpShortnum',k2dpShortnum)
+		
+	Case kDate
+		Do lMyList.$add('kDate1900',kDate1900)
+		Do lMyList.$add('kDate1980',kDate1980)
+		Do lMyList.$add('kDate2000',kDate2000)
+		Do lMyList.$add('kTime',kTime)
+		Do lMyList.$add('kDatetime',kDatetime)
+		
+	Case kList,kRow
+		Do lMyList.$add('')
+		Do $libs.$first() Returns lRef
+		While len(lRef)
+			Do lRef.$schemas.$appendlist(lMyList,con(pick(lRef.$name<>$clib().$name,'',con(lRef.$name,'.')),$ref.$name))
+			Do lRef.$queries.$appendlist(lMyList,con(pick(lRef.$name<>$clib().$name,'',con(lRef.$name,'.')),$ref.$name))
+			Do lMyList.$sort(lMyList.C1,kFalse)
+			
+			Do $libs.$next(lRef) Returns lRef
+		End While
+		
+	Default
+		Do lMyList.$add('N/A','')
+		
+End Switch
+
+If pColType=kList|pColType=kRow
+	Do lMyList.$search(lSubType=pColSubType,kTrue,kFalse,kFalse,kFalse)
+Else
+	Do lMyList.$search(lSubTypeValue=pColSubType,kTrue,kFalse,kFalse,kFalse)
+End If
+Quit method lMyList

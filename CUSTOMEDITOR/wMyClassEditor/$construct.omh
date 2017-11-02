@@ -1,0 +1,16 @@
+;  external schema editor - see about window for details
+
+Do $clib.$ignoreexternal.$assign(kTrue)     ;; ignore $external propety so any schema classes can be edited
+
+Set reference iClassRef to pClassRef
+Do iDeletedColumns.$define(iDeletedIdent)
+
+;  Do $cclass.$editordata.$assign('')     ;; debug, clear $editordata
+
+Do method loadWindowSetup
+Do method setTitle
+
+Do method getColTypes
+Do method getPickList
+
+Do method loadClass

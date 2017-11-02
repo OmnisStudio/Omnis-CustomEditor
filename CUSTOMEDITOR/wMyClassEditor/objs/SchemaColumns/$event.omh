@@ -1,0 +1,45 @@
+On evClick
+	If $cobj.$gridhcell=2
+		Do iColumnList.$line.$assign($cobj.$gridvcell-1)
+		Do method $getColSubTypeList (iColTypes.[pLineNumber].iColValue,'') Returns lList
+		Calculate iColumnList.iColSubTypeList as lList
+		If iColTypes.[pLineNumber].iColType='kCharacter'
+			Calculate iColumnList.iColSubLen as 100000000
+		Else
+			Calculate iColumnList.iColSubLen as 0
+		End If
+		Do $cinst.$redraw()
+	End If
+	
+On evExtend
+	Do method $addline (pLineNumber)
+	Do $cinst.$redraw()
+	
+On evRMouseDown     ;; st/wo/2370, evOpenContextMenu
+	Calculate iContextLine as mouseover(kMLine)
+	Do $cobj.$gridvcell.$assign(iContextLine+1)
+	
+On evDrag
+	Calculate iDragLine as mouseover(kMLine)
+	
+On evDrop
+	Calculate iDropLine as mouseover(kMLine)
+	If iDropLine<>iDragLine
+		Calculate iColName as iColumnList.[iDragLine].iColName
+		Calculate iColTypeList as iColumnList.[iDragLine].iColTypeList
+		Calculate iColSubTypeList as iColumnList.[iDragLine].iColSubTypeList
+		Calculate iColSubLen as iColumnList.[iDragLine].iColSubLen
+		Calculate iColDesc as iColumnList.[iDragLine].iColDesc
+		Calculate iColPrimaryKey as iColumnList.[iDragLine].iColPrimaryKey
+		Calculate iColNoNull as iColumnList.[iDragLine].iColNoNull
+		Calculate iColUserInfo as iColumnList.[iDragLine].iColUserInfo
+		Calculate iColIdent as iColumnList.[iDragLine].iColIdent
+		
+		Do iColumnList.$remove(iDragLine)
+		If iDropLine>iDragLine
+			Calculate iDropLine as iDropLine-1
+		End If
+		
+		Do iColumnList.$addbefore(iDropLine,iColName,iColTypeList,iColSubTypeList,iColSubLen,iColDesc,iColPrimaryKey,iColNoNull,iColUserInfo)
+		Do $cinst.$redraw()
+	End If

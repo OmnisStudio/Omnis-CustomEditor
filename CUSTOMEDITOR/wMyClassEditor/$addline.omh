@@ -1,0 +1,9 @@
+;  called by context menu (pListLine=0) and on evExtend (pListLine>0)
+
+If pListLine=0
+	Do iColumnList.$add()
+	Calculate pListLine as iColumnList.$linecount
+End If
+
+Do iColumnList.[pListLine].$assigncols(con('C',pListLine),$cinst.$getColTypeList(kCharacter),$cinst.$getColSubTypeList(kCharacter,kSimplechar),100000000,'',1,1,'',-1)
+Do $cinst.$redraw()

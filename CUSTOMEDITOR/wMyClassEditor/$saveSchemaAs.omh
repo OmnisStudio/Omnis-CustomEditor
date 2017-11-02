@@ -1,0 +1,9 @@
+;  called by 'Save as' menu option and by $destruct if class does not yet exist
+
+Open window instance wMyDialog/CEN ('saveSchema',lSchemaRef)
+If len(lSchemaRef)
+	Set reference iClassRef to lSchemaRef
+	Do iClassRef.$editor.$assign('MYEDITOR')
+	Do method saveClass
+	Do method setTitle
+End If

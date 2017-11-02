@@ -1,0 +1,7 @@
+;  called by context menu
+
+If iContextLine>0
+	Do iDeletedColumns.$add(iColumnList.[iContextLine].iColIdent)
+	Do iColumnList.$remove(iContextLine)
+	Do $cinst.$redraw()
+End If
