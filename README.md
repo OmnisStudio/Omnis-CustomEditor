@@ -1,7 +1,7 @@
 # Omnis-CustomEditor
 Library shows how you can create a custom editor to modify a schema class. 
 For more info:
-http://www.omnis.net/documentation/programming/index.jsp?detail=01omnistools.html#external-class-editor
+http://www.omnis.net/technotes/tnid0007.jsp
 
 For Omnis Studio 8.1.2 and above.
 
